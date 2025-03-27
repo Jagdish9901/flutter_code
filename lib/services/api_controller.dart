@@ -23,7 +23,6 @@ class ApiController {
       }
     } catch (e) {
       throw Exception("Network error: $e");
-      print("Network error: $e");
     }
   }
 }

@@ -19,54 +19,55 @@ class ConfirmationScreen extends StatelessWidget {
             onPressed: () async {
               bool exit = await _showExitDialog(context);
               if (exit) {
-                Navigator.pop(context,
-                    true); 
+                Navigator.pop(context, true);
               }
             },
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Submission Successful!",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Table(
-                border: TableBorder.all(color: Colors.grey),
-                columnWidths: {
-                  0: FlexColumnWidth(2),
-                  1: FlexColumnWidth(3),
-                },
-                children: [
-                  _buildTableRow("Campus Name", data['campus_name'] ?? 'N/A'),
-                  _buildTableRow("Parent Name", data['parent_name']),
-                  _buildTableRow("Student Name", data['student_name']),
-                  _buildTableRow("Next Class", data['next_class']),
-                  _buildTableRow("Previous Class", data['previous_class']),
-                  _buildTableRow(
-                      "DOB", data['dob'].isNotEmpty ? data['dob'] : 'N/A'),
-                  _buildTableRow("Email", data['email']),
-                  _buildTableRow("Contact No", data['contact_no']),
-                  _buildTableRow("Address", data['address']),
-                ],
-              ),
-              SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () async {
-                    bool exit = await _showExitDialog(context);
-                    if (exit) {
-                      Navigator.pop(context, true);
-                    }
-                  },
-                  child: Text("Back"),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Submission Successful!",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ),
-            ],
+                SizedBox(height: 10),
+                Table(
+                  border: TableBorder.all(color: Colors.grey),
+                  columnWidths: {
+                    0: FlexColumnWidth(2),
+                    1: FlexColumnWidth(3),
+                  },
+                  children: [
+                    _buildTableRow("Campus Name", data['campus_name'] ?? 'N/A'),
+                    _buildTableRow("Parent Name", data['parent_name']),
+                    _buildTableRow("Student Name", data['student_name']),
+                    _buildTableRow("Next Class", data['next_class']),
+                    _buildTableRow("Previous Class", data['previous_class']),
+                    _buildTableRow(
+                        "DOB", data['dob'].isNotEmpty ? data['dob'] : 'N/A'),
+                    _buildTableRow("Email", data['email']),
+                    _buildTableRow("Contact No", data['contact_no']),
+                    _buildTableRow("Address", data['address']),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      bool exit = await _showExitDialog(context);
+                      if (exit) {
+                        Navigator.pop(context, true);
+                      }
+                    },
+                    child: Text("Back"),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -99,7 +100,7 @@ class ConfirmationScreen extends StatelessWidget {
             content: Text("Are you sure you want to go back?"),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(context, false), 
+                onPressed: () => Navigator.pop(context, false),
                 child: Text("No"),
               ),
               TextButton(
